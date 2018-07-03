@@ -39,6 +39,11 @@ const NavigationType = keyMirror({
 
 const JSNavigationScheme = 'react-js-navigation';
 
+// https://developer.apple.com/documentation/webkit/wkwebviewconfiguration
+type WKWebViewConfiguration = {
+  allowsInlineMediaPlayback: bool;
+}
+
 type ErrorEvent = {
   domain: any;
   code: any;
@@ -76,6 +81,12 @@ const defaultRenderError = (errorDomain, errorCode, errorDesc) => (
 class WKWebView extends React.Component {
   static JSNavigationScheme = JSNavigationScheme;
   static NavigationType = NavigationType;
+
+  static setWKWebViewConfiguration = (config: WKWebViewConfiguration) => {
+    if (WKWebViewManager.setWKWebViewConfiguration) {
+      WKWebViewManager.setWKWebViewConfiguration(config);
+    }
+  }
 
   static propTypes = {
     ...ViewPropTypes,
