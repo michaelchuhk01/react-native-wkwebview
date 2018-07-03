@@ -42,6 +42,7 @@
 @implementation RCTWKWebView
 {
   WKWebView *_webView;
+  BOOL _allowsInlineMediaPlayback;
   BOOL _injectJavaScriptForMainFrameOnly;
   BOOL _injectedJavaScriptForMainFrameOnly;
   NSString *_injectJavaScript;
@@ -65,6 +66,7 @@ RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
 
     WKWebViewConfiguration* config = [[WKWebViewConfiguration alloc] init];
     config.processPool = processPool;
+    config.allowsInlineMediaPlayback = _allowsInlineMediaPlayback;
     WKUserContentController* userController = [[WKUserContentController alloc]init];
     [userController addScriptMessageHandler:[[WeakScriptMessageDelegate alloc] initWithDelegate:self] name:@"reactNative"];
     config.userContentController = userController;

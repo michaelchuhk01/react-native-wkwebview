@@ -247,6 +247,11 @@ class WKWebView extends React.Component {
      */
     allowsLinkPreview: PropTypes.bool,
     /**
+     * A Boolean value indicating whether HTML5 videos play inline or use the native full-screen controller.
+     * https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1614793-allowsinlinemediaplayback
+     */
+    allowsInlineMediaPlayback: PropTypes.bool,
+    /**
      * Sets the customized user agent by using of the WKWebView
     */
     customUserAgent: PropTypes.string,
@@ -344,6 +349,7 @@ class WKWebView extends React.Component {
         hideKeyboardAccessoryView={this.props.hideKeyboardAccessoryView}
         keyboardDisplayRequiresUserAction={this.props.keyboardDisplayRequiresUserAction}
         allowsLinkPreview={this.props.allowsLinkPreview}
+        allowsInlineMediaPlayback={this.props.allowsInlineMediaPlayback}
         onLoadingStart={this._onLoadingStart}
         onLoadingFinish={this._onLoadingFinish}
         onLoadingError={this._onLoadingError}
